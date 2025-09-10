@@ -12,11 +12,11 @@
 
 **Evidencia:**
 
-![Captura del Login Ficticio]
+![Captura del Login Ficticio](./Imagenes/Login.png)
 
 
 **Descripción:**
-La funcionalidad de inicio de sesión ficticio se ha implementado en [menciona el archivo o la sección del código] utilizando credenciales predefinidas (`usuario: admin`, `contraseña: password123`). Al ingresar estas credenciales, el sistema simula un acceso exitoso, redirigiendo al usuario a la interfaz principal de la aplicación de auditoría. No se utiliza una base de datos para la autenticación; la validación se realiza directamente en el código. Esto permite demostrar la capacidad de integración de una capa de autenticación básica, según lo solicitado.
+La funcionalidad de inicio de sesión ficticio se ha implementado en el frontend de la aplicación utilizando React. Consiste en un formulario con campos para usuario y contraseña. Al ingresar las credenciales predefinidas (`usuario: admin`, `contraseña: password123`), el sistema simula un acceso exitoso y redirige al usuario a la interfaz principal de gestión de riesgos. La validación se realiza directamente en el código del componente React, sin necesidad de una base de datos, cumpliendo con el requisito de un login ficticio.
 
 ---
 
@@ -24,11 +24,11 @@ La funcionalidad de inicio de sesión ficticio se ha implementado en [menciona e
 
 **Evidencia:**
 
-![Captura del Código Fuente del Motor de IA Mejorado]
+![Captura del Código Fuente del Motor de IA Mejorado](./Imagenes/Motor.png)
 
 
 **Descripción:**
-El motor de inteligencia artificial ha sido mejorado en el archivo `[nombre_del_archivo.py o .js, etc.]` en la función `[nombre_de_la_funcion_IA]`. Las mejoras se centraron en refinar los prompts para la generación de perfiles de riesgo más detallados y análisis de impacto más precisos, utilizando un modelo de lenguaje avanzado ejecutado localmente. Se han incorporado directrices específicas en los prompts para asegurar que las recomendaciones de mitigación estén alineadas con los controles de la norma ISO 27001, haciendo referencia a categorías como el control de acceso, seguridad de operaciones, gestión de incidentes, etc. Esto permite que el sistema ofrezca sugerencias más relevantes y estructuradas para la gestión de la seguridad de la información.
+El motor de inteligencia artificial ha sido mejorado en el backend de Flask, específicamente en la función que interactúa con Ollama y LangChain para el análisis de activos. Las mejoras se centraron en refinar los prompts que se envían al modelo `llama2:7b` para generar perfiles de riesgo más específicos, análisis de impacto detallados y recomendaciones de mitigación que buscan alinearse con los principios de ISO 27001. Se han añadido instrucciones explícitas en los prompts para que la IA considere escenarios de riesgo comunes en el entorno bancario y sugiera tratamientos relevantes, como "Desarrollo de políticas de seguridad", "Cifrado de datos sensibles" o "Copias de seguridad periódicas", como se evidencia en los hallazgos. Esto permite que el sistema ofrezca sugerencias más relevantes y estructuradas para la gestión de la seguridad de la información.
 
 ---
 
@@ -36,85 +36,85 @@ El motor de inteligencia artificial ha sido mejorado en el archivo `[nombre_del_
 
 Aquí se presentan los hallazgos de la auditoría para 5 activos de información seleccionados, utilizando el motor de IA mejorado para el análisis de riesgos y recomendaciones.
 
-### Activo 1: Servidor de Base de Datos
+### Activo 1: Servidor de base de datos
 
 **Evidencia:**
 
-![Captura del Análisis del Servidor de Base de Datos]
+![Captura del Análisis del Servidor de Base de Datos](./Imagenes/Activo1.png)
 
 
 **Condición:**
-Se ha identificado que el servidor de base de datos principal almacena información sensible de clientes (números de cuenta, saldos) y no cuenta con cifrado de datos en reposo activado por defecto. Además, las políticas de contraseñas para los usuarios de la base de datos no exigen una complejidad mínima adecuada ni rotación periódica.
+Se ha identificado una vulnerabilidad crítica en el **Servidor de Base de Datos**, manifestada como la "Pérdida de Servidor de base de datos". Esto implica un alto riesgo de indisponibilidad y acceso no autorizado a la información. La situación actual sugiere que no existen medidas preventivas o de recuperación robustas.
 
 **Recomendación:**
-Implementar el cifrado de datos en reposo (por ejemplo, TDE - Transparent Data Encryption) para proteger la información sensible almacenada. Fortalecer las políticas de contraseñas para los usuarios de la base de datos, exigiendo una longitud mínima de 12 caracteres, uso de mayúsculas, minúsculas, números y símbolos, y establecer una rotación obligatoria cada 90 días, alineado con el control A.9.2.1 de ISO 27001 (Política de control de acceso).
+Desarrollar y aplicar políticas de seguridad exhaustivas para la protección del servidor de base de datos. Esto incluye controles de acceso estrictos (ISO 27001 A.9.1), monitoreo de actividades (ISO 27001 A.12.4), y la implementación de planes de respaldo y recuperación ante desastres (ISO 27001 A.12.3) para asegurar la continuidad del servicio y la integridad de los datos.
 
 **Riesgo:** Alta
 
 ---
 
-### Activo 2: API Transacciones
+### Activo 2: Contratos Digitales
 
 **Evidencia:**
 
-![Captura del Análisis de API Transacciones]
+![Captura del Análisis de Contratos Digitales](./Imagenes/Activo2.png)
 
 
 **Condición:**
-La API de transacciones, expuesta para servicios de banca móvil, no implementa un mecanismo robusto de limitación de tasa de solicitudes (rate limiting) y las claves API utilizadas son estáticas y no se rotan regularmente. Existe el riesgo de ataques de fuerza bruta o denegación de servicio distribuido (DDoS) a través de esta API.
+Se detecta el riesgo de "Pérdida de Contratos Digitales", lo que resultaría en la "Pérdida de información valiosa relacionada con Contratos Digitales". Dada la naturaleza legal y vinculante de estos documentos, su compromiso representa un riesgo significativo para la operación bancaria y su cumplimiento normativo.
 
 **Recomendación:**
-Implementar un sistema de rate limiting y throttling en el gateway de la API para prevenir ataques de fuerza bruta y DDoS. Establecer un proceso de rotación periódica de las claves API (cada 90 días) y asegurar que se utilice OAuth 2.0 con tokens de corta duración para la autenticación y autorización, conforme al control A.13.1.2 de ISO 27001 (Protección de los servicios de red).
-
-**Riesgo:** Media
-
----
-
-### Activo 3: Aplicación Web de Banca
-
-**Evidencia:**
-
-![Captura del Análisis de la Aplicación Web de Banca]
-
-
-**Condición:**
-La aplicación web de banca presenta formularios de entrada de datos que no validan adecuadamente la entrada del usuario, lo que podría permitir ataques de inyección SQL o Cross-Site Scripting (XSS). Además, la gestión de sesiones no invalida tokens de sesión después de un período de inactividad prolongado.
-
-**Recomendación:**
-Implementar validaciones robustas en el lado del servidor para todas las entradas de usuario y utilizar sentencias preparadas o ORM para interactuar con la base de datos, mitigando inyecciones SQL. Establecer un tiempo de inactividad para las sesiones de usuario (por ejemplo, 15 minutos) después del cual la sesión debe invalidarse automáticamente, alineado con el control A.14.1.2 de ISO 27001 (Desarrollo de software y sistema seguro).
+Implementar el cifrado de datos sensibles en reposo y en tránsito para todos los contratos digitales, conforme al control A.10.1.1 (Política de uso de controles criptográficos) y A.13.2.1 (Controles de red) de ISO 27001. Adicionalmente, establecer un sistema de gestión documental seguro con controles de acceso basados en roles y copias de seguridad versionadas.
 
 **Riesgo:** Alta
 
 ---
 
-### Activo 4: Firewall Perimetral
+### Activo 3: Configuración del Cortafuegos
 
 **Evidencia:**
 
-![Captura del Análisis del Firewall Perimetral]
+![Captura del Análisis de la Configuración del Cortafuegos](./Imagenes/Activo3.png)
 
 
 **Condición:**
-Se observó que las reglas del firewall perimetral no se revisan ni actualizan periódicamente, y algunas reglas permiten el tráfico de puertos y protocolos innecesarios para la operación bancaria. No hay un registro centralizado y monitoreo constante de los eventos del firewall.
+El activo "Configuración del Cortafuegos" presenta un riesgo de "Pérdida de Configuración del Cortafuegos", lo cual llevaría a la "Pérdida de información valiosa relacionada con Configuración del Cortafuegos". Una configuración comprometida o perdida del cortafuegos puede dejar la red bancaria expuesta a ataques externos.
 
 **Recomendación:**
-Establecer un proceso formal para la revisión trimestral de las reglas del firewall, eliminando cualquier regla obsoleta o innecesaria. Implementar un sistema de gestión de logs centralizado (SIEM) para recopilar y monitorear los registros del firewall en tiempo real, permitiendo la detección temprana de actividades sospechosas, según el control A.12.4.1 de ISO 27001 (Registro de eventos).
+Establecer un programa de copias de seguridad periódicas y automatizadas de la configuración del cortafuegos, almacenándolas en una ubicación segura y distinta del propio dispositivo. Realizar pruebas regulares de restauración de estas copias de seguridad, en línea con el control A.12.3.1 (Copia de seguridad de la información) de ISO 27001, y asegurar un control de versiones de las configuraciones.
 
 **Riesgo:** Media
 
 ---
 
-### Activo 5: Autenticación MFA
+### Activo 4: Bot de Atención al Cliente
 
 **Evidencia:**
 
-![Captura del Análisis de Autenticación MFA]
+![Captura del Análisis del Bot de Atención al Cliente](./Imagenes/Activo4.png)
 
 
 **Condición:**
-Aunque el banco utiliza autenticación multifactor (MFA) para el acceso a sistemas críticos, se ha detectado que en algunas configuraciones la MFA puede ser omitida bajo ciertas condiciones (por ejemplo, desde IPs de confianza no verificadas adecuadamente) o el segundo factor es vulnerable a ataques de phishing (SMS basado en OTP sin validación de canal).
+Se ha identificado el riesgo de "Pérdida de Bot de Atención al Cliente", lo que implicaría la "Pérdida de información valiosa relacionada con Bot de Atención al Cliente". Aunque no crítico para las transacciones directas, la indisponibilidad de este bot afectaría la experiencia del cliente y la capacidad de soporte.
 
 **Recomendación:**
-Revisar y fortalecer las políticas de MFA para asegurar que sea obligatoria en todas las condiciones de acceso remoto y para sistemas críticos, independientemente de la dirección IP de origen. Evaluar la implementación de factores de autenticación más robustos, como FIDO2 o aplicaciones de autenticación con push notifications, para mitigar riesgos de phishing y otros ataques de ingeniería social, conforme al control A.9.2.4 de ISO 27001 (Autenticación de información de usuario).
+Implementar un esquema de copias de seguridad periódicas de los datos de configuración y del "conocimiento" del bot de atención al cliente. Establecer un plan de recuperación que permita restaurar rápidamente el servicio del bot en caso de fallo, minimizando el impacto en la disponibilidad y la calidad del servicio, siguiendo el control A.12.3.1 (Copia de seguridad de la información) de ISO 27001.
 
-**Riesgo:** Media
+**Riesgo:** Baja
+
+---
+
+### Activo 5: CRM Bancario
+
+**Evidencia:**
+
+![Captura del Análisis del CRM Bancario](./Imagenes/Activo5.png)
+
+
+**Condición:**
+El sistema "CRM Bancario" presenta el riesgo de "Pérdida de CRM Bancario", lo que implica la "Pérdida de información valiosa relacionada con CRM Bancario". Este activo contiene datos sensibles de clientes y su interacción con el banco, por lo que su compromiso tiene un alto impacto en la privacidad y la relación con el cliente.
+
+**Recomendación:**
+Aplicar cifrado de datos sensibles tanto en reposo como en tránsito dentro del sistema CRM Bancario para proteger la información de clientes. Reforzar las políticas de control de acceso (ISO 27001 A.9.2), segmentando el acceso a la información según el principio de "necesidad de saber", y realizar auditorías periódicas de acceso a los datos.
+
+**Riesgo:** Alta
