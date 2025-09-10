@@ -12,7 +12,8 @@
 
 **Evidencia:**
 
-![Captura del Login Ficticio](./Imagenes/Login.png)
+![Captura del Codigo Modificado](./Imagenes/Login.png)
+![Captura del Login Ficticio](./Imagenes/Login1.png)
 
 
 **Descripción:**
