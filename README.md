@@ -1,4 +1,5 @@
-# Informe de Auditoría de Sistemas - Examen de la Unidad I
+# Informe de Auditoría de Sistemas
+# Examen de Unidad I
 
 **Nombres y apellidos:** Jorge Luis Briceño Diaz
 **Fecha:** 10/09/2025
