@@ -17,7 +17,7 @@
 
 
 **Descripción:**
-La funcionalidad de inicio de sesión ficticio se ha implementado en el frontend de la aplicación utilizando React. Consiste en un formulario con campos para usuario y contraseña. Al ingresar las credenciales predefinidas (`usuario: admin`, `contraseña: password123`), el sistema simula un acceso exitoso y redirige al usuario a la interfaz principal de gestión de riesgos. La validación se realiza directamente en el código del componente React, sin necesidad de una base de datos, cumpliendo con el requisito de un login ficticio.
+La funcionalidad de inicio de sesión ficticio se ha implementado en el frontend de la aplicación utilizando React. Consiste en un formulario con campos para usuario y contraseña. Al ingresar las credenciales predefinidas (`usuario: admin`, `contraseña: 123456`), el sistema simula un acceso exitoso y redirige al usuario a la interfaz principal de gestión de riesgos. La validación se realiza directamente en el código del componente React, sin necesidad de una base de datos, cumpliendo con el requisito de un login ficticio.
 
 ---
 
