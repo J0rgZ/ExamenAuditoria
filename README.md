@@ -2,7 +2,7 @@
 
 **Nombres y apellidos:** Jorge Luis Briceño Diaz
 **Fecha:** 10/09/2025
-**URL GitHub:** 
+**URL GitHub:** https://github.com/J0rgZ/ExamenAuditoria.git
 
 ---
 
